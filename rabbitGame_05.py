@@ -70,7 +70,9 @@ def main():
         playerpos1 = (playerpos[0] - playerrot.get_rect().width / 2, playerpos[1] - playerrot.get_rect().height / 2)
         screen.blit(playerrot, playerpos1)
         # 6.2 - Draw arrows
+        print(arrows)
         for bullet in list(arrows):
+            print(arrows)
             velx = math.cos(bullet[0]) * 10
             vely = math.sin(bullet[0]) * 10
             bullet[1] += velx
@@ -80,6 +82,7 @@ def main():
                 if num_arrows <= 0:
                     running = 0
         for projectile in arrows:
+            print(arrows)
             arrow1 = pygame.transform.rotate(arrow, 360 - projectile[0] * 57.29)
             screen.blit(arrow1, (projectile[1], projectile[2]))
 
@@ -104,6 +107,7 @@ def main():
                 healthvalue -= random.randint(5, 20)
                 badguys.remove(badguy)
             # 6.3.2 - Check for collisions
+            # 화살에 맞으면 죽는다.
             for bullet in list(arrows):
                 bullrect = pygame.Rect(arrow.get_rect())
                 bullrect.left = bullet[1]
